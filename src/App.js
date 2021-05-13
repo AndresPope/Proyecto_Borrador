@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
+import Materialui from "./components/Material";
+import { AppLayout } from "@awsui/components-react";
+import ReactMarkdown from "react-markdown";
+import documentationMK from "./components/documentationMK.md";
 
-function App() {
+const test = async () => await require("./components/documentationMK.md");
+
+const App = () => {
+  const [document, setDocument] = useState(undefined);
+
+  useEffect(() => {
+    setDocument(test());
+  }, []);
+
+  console.log(document);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppLayout
+      content={<Materialui />}
+      tools={
+        <ReactMarkdown
+          source={documentationMK}
+          children={(documentationMK, "nada")}
+        ></ReactMarkdown>
+      }
+    />
   );
-}
-
+};
 export default App;

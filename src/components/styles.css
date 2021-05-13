@@ -1,0 +1,18 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.pad-bot {
+  padding-bottom: 35px !important;
+}
+
+.pad-top {
+  padding-top: 41px !important;
+}
+
+#cc {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+}
